@@ -23,4 +23,5 @@ include_recipe "python::pip"
 python_pip "virtualenv" do
   action :upgrade
   version node['python']['virtualenv_version']
+  not_if { ::File.exists?("/usr/lib/python2.7/dist-packages/six.py") }
 end
